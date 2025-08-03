@@ -1,0 +1,25 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+flask = "*"
+flask-cors = "*"
+pymupdf = "*"
+python-docx = "*"
+sentence-transformers = "*"
+textstat = "*"
+scikit-learn = "*"
+
+[dev-packages]
+flask = "*"
+flask-cors = "*"
+pymupdf = "*"
+python-docx = "*"
+sentence-transformers = "*"
+textstat = "*"
+scikit-learn = "*"
+
+[requires]
+python_version = "3.12"
