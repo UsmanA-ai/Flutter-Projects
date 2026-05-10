@@ -23,7 +23,7 @@ This repo contains Flutter applications I've built to learn, experiment, and sol
 
 ---
 
-### 🧠 2. **OBE-FYP (Outcome-Based Education System)**  
+### 🧠 2. **Outcome-Based Education System**  
 > A Flutter app for faculty and students that manages assignment evaluation using AI models.
 
 - **Purpose**: Facilitates assignment uploading, student submission, and automatic evaluation using an AI-based backend.
@@ -39,6 +39,22 @@ This repo contains Flutter applications I've built to learn, experiment, and sol
 - **Tech Stack**:  
   `Flutter`, `Firebase`, `Flask`, `Cloudinary`, `TF-IDF`, `Matplotlib`, `Python`, `Provider`, `File Picker`, `HTTP`
 
-> 📂 Path: `/OBE-FYP`
+> 📂 Path: `/Outcome-Based Education System`
+
+---
+
+### 🔬 3. **Disease Diagnostics**  
+> A Flutter Web-based AI application for rapid diagnostic classification.
+
+- **Purpose**: Provides instant preliminary analysis of medical imagery directly in the browser using pre-trained Deep Learning models.
+- **Features**:
+  - **Brain Tumor Detection**: Classifies Meningioma, Glioma, and Pituitary tumors from MRI scans.
+  - **Skin Cancer Detection**: Identifies Melanoma and Basal Cell Carcinomas from dermatological images.
+  - **Web-Native Inference**: Runs heavy TFLite models locally using TFJS and Dart JS interop.
+  - **Secure Auth**: Built-in login/signup flow with smart routing.
+- **Tech Stack**:  
+  `Flutter Web`, `TensorFlow Lite`, `TensorFlow.js`, `Dart JS Interop`, `Material 3`
+
+> 📂 Path: `/Disease Diagnostics`
 
 ---
