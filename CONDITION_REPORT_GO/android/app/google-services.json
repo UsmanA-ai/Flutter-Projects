@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "240481845821",
+    "project_id": "condition-report-go-16e6e",
+    "storage_bucket": "condition-report-go-16e6e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:240481845821:android:30d4f4cec728a73c50a054",
+        "android_client_info": {
+          "package_name": "com.example.condition_report"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwojCShQQYi2G9PdwGvqIeTPLWIll-dQU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

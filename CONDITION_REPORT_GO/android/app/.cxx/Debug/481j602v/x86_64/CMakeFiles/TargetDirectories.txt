@@ -1,0 +1,2 @@
+E:/Usman/Project/CONDITION_REPORT_GO/android/app/.cxx/Debug/481j602v/x86_64/CMakeFiles/edit_cache.dir
+E:/Usman/Project/CONDITION_REPORT_GO/android/app/.cxx/Debug/481j602v/x86_64/CMakeFiles/rebuild_cache.dir
