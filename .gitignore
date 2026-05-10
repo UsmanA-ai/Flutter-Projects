@@ -1,4 +1,6 @@
 # IDEs and Editors
 .idea/
 .vscode/
+Disease Diagnostics/lib/api_keys.dart
+.vscode/
 *.iml

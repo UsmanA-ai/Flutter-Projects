@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'home_screen.dart';
+import 'neuron_background.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,7 +19,7 @@ class ClinikScanWeb extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Disease Dignostics',
+      title: 'Disease Dignostics AI',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -33,6 +34,9 @@ class ClinikScanWeb extends StatelessWidget {
         ),
       ),
       home: const HomeScreen(),
+      builder: (context, child) {
+        return NeuronBackground(child: child!);
+      },
     );
   }
 }

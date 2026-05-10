@@ -1,7 +1,7 @@
 # 🚀 Flutter Projects Portfolio
 
 Welcome to my Flutter Projects repository!  
-This repo contains Flutter applications I've built to learn, experiment, and solve real-world problems. Each app is self-contained and follows clean code practices, responsive UI design, and proper state management.
+This repo contains Flutter applications I've built to learn, experiment, and solve real-world problems. Each app follows clean code practices, responsive UI design, and proper state management.
 
 ---
 
@@ -44,16 +44,18 @@ This repo contains Flutter applications I've built to learn, experiment, and sol
 ---
 
 ### 🔬 3. **Disease Diagnostics**  
-> A Flutter Web-based AI application for rapid diagnostic classification.
+> A premium Flutter Web-based AI platform for rapid diagnostic classification and medical insight.
 
-- **Purpose**: Provides instant preliminary analysis of medical imagery directly in the browser using pre-trained Deep Learning models.
+- **Purpose**: Provides instant preliminary analysis of medical imagery directly in the browser with real-time AI-generated medical explanations.
 - **Features**:
   - **Brain Tumor Detection**: Classifies Meningioma, Glioma, and Pituitary tumors from MRI scans.
-  - **Skin Cancer Detection**: Identifies Melanoma and Basal Cell Carcinomas from dermatological images.
-  - **Web-Native Inference**: Runs heavy TFLite models locally using TFJS and Dart JS interop.
-  - **Secure Auth**: Built-in login/signup flow with smart routing.
+  - **Skin Cancer Detection**: Identifies 7 types of skin lesions (HAM10000 dataset categories).
+  - **Real-Time AI Medical Insights**: Human-friendly explanations for diagnostic results powered by **Llama 3.1**.
+  - **AI Doctor Chat**: A real-time interactive assistant for diagnostic follow-up.
+  - **Global Neuron Background**: Mouse-tracking neural network animation persistent across all screens.
+  - **Cloud Infrastructure**: Secure Supabase Auth, Cloud Storage, and persistent scan history.
 - **Tech Stack**:  
-  `Flutter Web`, `TensorFlow Lite`, `TensorFlow.js`, `Dart JS Interop`, `Material 3`
+  `Flutter Web`, `TensorFlow Lite`, `TensorFlow.js`, `Supabase`, `Groq Cloud (LLM)`, `Llama 3.1`, `Material 3`
 
 > 📂 Path: `/Disease Diagnostics`
 

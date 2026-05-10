@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:js_interop';
 import 'package:image_picker/image_picker.dart';
 
@@ -14,23 +15,31 @@ class MLService {
 
   Future<String> predictBrainTumor(XFile imageFile) async {
     try {
-      // Call the JS interop function
-      final jsResult = await _runInferenceJS('brain'.toJS).toDart;
+      print("Starting Brain Tumor inference...");
+      // Call the JS interop function with a timeout
+      final jsResult = await _runInferenceJS('brain'.toJS).toDart.timeout(
+        const Duration(seconds: 10),
+        onTimeout: () => throw TimeoutException('Inference timed out after 10 seconds'),
+      );
       return (jsResult as JSString).toDart;
     } catch (e) {
-      print("JS Inference error (Brain): $e");
-      return 'Error during JS inference: $e';
+      print("Inference error (Brain): $e");
+      return 'Inference failed: $e';
     }
   }
 
   Future<String> predictSkinCancer(XFile imageFile) async {
     try {
-      // Call the JS interop function
-      final jsResult = await _runInferenceJS('skin'.toJS).toDart;
+      print("Starting Skin Cancer inference...");
+      // Call the JS interop function with a timeout
+      final jsResult = await _runInferenceJS('skin'.toJS).toDart.timeout(
+        const Duration(seconds: 10),
+        onTimeout: () => throw TimeoutException('Inference timed out after 10 seconds'),
+      );
       return (jsResult as JSString).toDart;
     } catch (e) {
-      print("JS Inference error (Skin): $e");
-      return 'Error during JS inference: $e';
+      print("Inference error (Skin): $e");
+      return 'Inference failed: $e';
     }
   }
 }

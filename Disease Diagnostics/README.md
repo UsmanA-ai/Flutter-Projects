@@ -1,37 +1,57 @@
-# Disease Diagnostics Web App 🔬
+# ClinikScan AI - Disease Diagnostics 🧠🔬
 
-A cutting-edge, Flutter Web-based artificial intelligence application designed for rapid diagnostic classification. This platform utilizes pre-trained Deep Learning models to provide instant preliminary analysis of medical imagery directly in the browser.
+ClinikScan AI is a premium, production-ready medical diagnostics platform built with Flutter and powered by state-of-the-art AI models. It specializes in the early detection and analysis of Brain Tumors (from MRI scans) and Skin Cancer (using the HAM10000 dataset categories).
 
-## Features ✨
-- **🧠 Brain Tumor Detection**: Analyzes MRI scans to detect and classify Meningioma, Glioma, and Pituitary tumors.
-- **⚕️ Skin Cancer Detection**: Evaluates dermatological images to identify Melanoma and Basal Cell Carcinomas.
-- **🌐 Web-Native AI Inference**: Uses TensorFlow.js (`tfjs`) bridged securely via Dart `js_interop` to run heavy TFLite models natively within the browser, requiring no backend server.
-- **🎨 Premium UI/UX**: Features a modern, responsive Glassmorphism design system tailored with dynamic animations, scrollable layouts, and sleek system fonts.
-- **🔒 Secure Authentication Flow**: Includes built-in login and signup portals with seamless smart routing back to your selected diagnostic tool.
+## ✨ Key Features
+- **Global Neuron Background**: An interactive, mouse-tracking neural network animation that persists across all screens.
+- **Dual AI Diagnostics**:
+  - **Brain Tumor Detection**: Analyzes MRI scans for Glioma, Meningioma, and Pituitary tumors.
+  - **Skin Cancer Detection**: Identifies 7 types of skin lesions (MEL, BCC, AKIEC, BKL, DF, NV, VASC).
+- **Real-Time AI Insights**: Powered by **Llama 3.1** via Groq, providing empathetic, human-friendly medical explanations for every scan.
+- **AI Medical Assistant**: A built-in real-time chatbot for follow-up questions about diagnostic results.
+- **Cloud Infrastructure**: 
+  - **Supabase Auth**: Secure Email & Google login.
+  - **Supabase Storage**: High-speed image hosting for scans.
+  - **Analysis History**: Persistent history tracking for every user scan.
 
-## Technology Stack
-- **Framework**: Flutter (Web explicitly targeted)
-- **Machine Learning**: TensorFlow Lite / TensorFlow.js
-- **Styling**: Vanilla Flutter Material 3 with Custom Dark Gradients & Backdrop Blur Filters
-- **Web Bridge**: Dart JS Interop
+## 🛠️ Tech Stack
+- **Frontend**: Flutter (Web Optimized)
+- **Backend**: Supabase (Auth, DB, Storage)
+- **AI Inference**: TFJS-TFLite (Browser-side)
+- **AI Insights**: Groq Cloud (Llama 3.1 LLM)
+- **Styling**: Modern Glassmorphism & Custom Neuron Animations
 
-## How to Run Locally 💻
+## 🚀 Getting Started
 
-1. Clone the repository and navigate to this folder.
-2. Ensure you have the Flutter SDK installed and web support enabled.
-3. Install the dependencies:
-   ```bash
-   flutter pub get
-   ```
-4. Run the project specifically on Chrome (required for JS Interop testing):
-   ```bash
-   flutter run -d chrome
-   ```
-
-## Deployment 🚀
-This project is fully optimized for continuous deployment platforms like **Vercel** or **GitHub Pages**.
-
-To build the optimized production web bundle manually:
-```bash
-flutter build web --release
+### 1. Supabase Setup
+- Create a new project on [Supabase](https://supabase.com/).
+- Create a storage bucket named `analysis-images` and set it to **Public**.
+- Run the following SQL in the Editor to create the history table:
+```sql
+CREATE TABLE analysis_history (
+    id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+    user_id UUID REFERENCES auth.users(id),
+    model_type TEXT,
+    result_label TEXT,
+    confidence FLOAT,
+    image_url TEXT,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
 ```
+
+### 2. API Keys
+- Add your Supabase URL and Anon Key in `lib/main.dart`.
+- Get a free Groq API key from [Groq Console](https://console.groq.com/).
+- Add the key to `lib/api_keys.dart`.
+
+### 3. Run the App
+```bash
+flutter pub get
+flutter run -d chrome
+```
+
+## 🛡️ Security
+This app uses **Row Level Security (RLS)** in Supabase to ensure that users can only view their own diagnostic history, protecting sensitive medical data.
+
+---
+Developed with ❤️ by Usman
