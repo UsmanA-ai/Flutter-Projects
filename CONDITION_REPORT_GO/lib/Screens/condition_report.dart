@@ -90,10 +90,8 @@ class _ConditionReportState extends State<ConditionReport> {
   Future<void> _saveDocument() async {
     try {
       // Reference to Firestore
-      print('exhbit a');
       final firestore = FirebaseFirestore.instance;
       final userDoc = firestore.collection("users").doc(uid);
-      print('exhbit b');
 
       // Refererring to the assessment document
       DocumentReference assessmentRef =
@@ -101,7 +99,6 @@ class _ConditionReportState extends State<ConditionReport> {
 
       // Fetching the assessment document
       DocumentSnapshot assessmentSnapshot = await assessmentRef.get();
-      print('Assessment snapshot: $assessmentSnapshot');
 
       if (!assessmentSnapshot.exists) {
         log("Assessment document not found!");
@@ -109,8 +106,6 @@ class _ConditionReportState extends State<ConditionReport> {
       }
 
       // Get the assessment data
-      Map<String, dynamic> assessmentData =
-          assessmentSnapshot.data() as Map<String, dynamic>;
 
       // Save a copy in the "documents" collection
       await userDoc
@@ -124,9 +119,11 @@ class _ConditionReportState extends State<ConditionReport> {
 
       log("Document saved in both 'assessment' and 'documents' collections!");
 
+      if (!mounted) return;
+
       // Show confirmation
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Saved successfully in Documents!")),
+        const SnackBar(content: Text("Saved successfully in Documents!")),
       );
 
       // Refreshing Documents Screen
@@ -136,8 +133,9 @@ class _ConditionReportState extends State<ConditionReport> {
       );
     } catch (e) {
       log("Error saving document: $e");
+      if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Error saving document!")),
+        const SnackBar(content: Text("Error saving document!")),
       );
     }
   }
@@ -274,8 +272,10 @@ class _ConditionReportState extends State<ConditionReport> {
                                           ),
                                           child: SvgPicture.asset(
                                             "assets/images/Vector.svg",
-                                            color: const Color.fromRGBO(
-                                                37, 144, 240, 1),
+                                            colorFilter: ColorFilter.mode(
+                                                const Color.fromRGBO(
+                                                    37, 144, 240, 1),
+                                                BlendMode.srcIn),
                                             height: 6.55,
                                             width: 6.55,
                                           ),
@@ -677,8 +677,10 @@ class _ConditionReportState extends State<ConditionReport> {
                                             "assets/images/doc-detail.svg",
                                             height: 24,
                                             width: 24,
-                                            color: const Color.fromRGBO(
-                                                37, 144, 240, 1),
+                                            colorFilter: ColorFilter.mode(
+                                                const Color.fromRGBO(
+                                                    37, 144, 240, 1),
+                                                BlendMode.srcIn),
                                           ),
                                         ),
                                         SvgPicture.asset(
@@ -851,8 +853,10 @@ class _ConditionReportState extends State<ConditionReport> {
                                             "assets/images/doc-detail.svg",
                                             height: 24,
                                             width: 24,
-                                            color: const Color.fromRGBO(
-                                                37, 144, 240, 1),
+                                            colorFilter: ColorFilter.mode(
+                                                const Color.fromRGBO(
+                                                    37, 144, 240, 1),
+                                                BlendMode.srcIn),
                                           ),
                                         ),
                                         SvgPicture.asset(
@@ -1115,8 +1119,10 @@ class _ConditionReportState extends State<ConditionReport> {
                                             "assets/images/doc-detail.svg",
                                             height: 24,
                                             width: 24,
-                                            color: const Color.fromRGBO(
-                                                37, 144, 240, 1),
+                                            colorFilter: ColorFilter.mode(
+                                                const Color.fromRGBO(
+                                                    37, 144, 240, 1),
+                                                BlendMode.srcIn),
                                           ),
                                         ),
                                         SvgPicture.asset(

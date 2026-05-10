@@ -67,3 +67,4 @@ class DefaultFirebaseOptions {
     storageBucket: 'fyp-project-a9b28.firebasestorage.app',
   );
 }
+

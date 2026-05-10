@@ -550,3 +550,4 @@ class AcademicInformation extends StatelessWidget {
     return snapshot.data() as Map<String, dynamic>;
   }
 }
+

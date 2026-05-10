@@ -33,6 +33,7 @@ class _FacultyLoginPageState extends State<FacultyLoginPage> {
 
       if (usercredential.user != null) {
         // await _showMessageDialog("Success", "Login successful!");
+        if (!mounted) return;
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => const FacultyDashBoard()),
@@ -89,7 +90,6 @@ class _FacultyLoginPageState extends State<FacultyLoginPage> {
 
   Future<void> _showUpdatePasswordDialog() async {
     String newPassword = '';
-    String confirmPassword = '';
 
     showDialog<void>(
       context: context,
@@ -119,9 +119,6 @@ class _FacultyLoginPageState extends State<FacultyLoginPage> {
                   },
                 ),
                 TextFormField(
-                  onChanged: (value) {
-                    confirmPassword = value;
-                  },
                   obscureText: true,
                   decoration: const InputDecoration(
                     labelText: 'Confirm Password',
@@ -173,6 +170,7 @@ class _FacultyLoginPageState extends State<FacultyLoginPage> {
       await FirebaseAuth.instance
           .sendPasswordResetEmail(email: email.text.trim());
       Fluttertoast.showToast(msg: 'Password reset email sent');
+      if (!mounted) return;
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => const FacultyLoginPage()),
@@ -248,7 +246,7 @@ class _FacultyLoginPageState extends State<FacultyLoginPage> {
                     "Faculty Login",
                     style: TextStyle(
                       fontSize: 25,
-                      color: Colors.white.withOpacity(1.0),
+                      color: Colors.white.withAlpha(255),
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -409,7 +407,7 @@ class _FacultyLoginPageState extends State<FacultyLoginPage> {
                                 borderRadius: BorderRadius.circular(25),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.blueGrey.withOpacity(0.5),
+                                    color: Colors.blueGrey.withAlpha(128),
                                     spreadRadius: 3,
                                     blurRadius: 5,
                                     offset: const Offset(0, 2),
@@ -481,3 +479,4 @@ class _FacultyLoginPageState extends State<FacultyLoginPage> {
     );
   }
 }
+

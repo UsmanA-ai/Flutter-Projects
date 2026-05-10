@@ -376,8 +376,7 @@ class _AdminSEnrollPageState extends State<AdminSEnrollPage> {
                                                                 BoxShadow(
                                                                   color: Colors
                                                                       .blueGrey
-                                                                      .withOpacity(
-                                                                          0.5), // Shadow color
+                                                                      .withValues(alpha: 0.5), // Shadow color
                                                                   spreadRadius:
                                                                       3, // Spread radius
                                                                   blurRadius:
@@ -1876,8 +1875,7 @@ class _AdminSEnrollPageState extends State<AdminSEnrollPage> {
                                             boxShadow: [
                                               BoxShadow(
                                                 color: Colors.blueGrey
-                                                    .withOpacity(
-                                                        0.5), // Shadow color
+                                                    .withValues(alpha: 0.5), // Shadow color
                                                 spreadRadius:
                                                     3, // Spread radius
                                                 blurRadius: 5, // Blur radius
@@ -1918,8 +1916,7 @@ class _AdminSEnrollPageState extends State<AdminSEnrollPage> {
                                                 BorderRadius.circular(25),
                                             boxShadow: [
                                               BoxShadow(
-                                                color: Colors.grey.withOpacity(
-                                                    0.5), // Shadow color
+                                                color: Colors.grey.withValues(alpha: 0.5), // Shadow color
                                                 spreadRadius:
                                                     3, // Spread radius
                                                 blurRadius: 5, // Blur radius
@@ -1963,3 +1960,4 @@ class _AdminSEnrollPageState extends State<AdminSEnrollPage> {
         ));
   }
 }
+

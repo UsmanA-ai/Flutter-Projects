@@ -250,3 +250,4 @@ class FacultyTimeTable extends StatelessWidget {
     );
   }
 }
+

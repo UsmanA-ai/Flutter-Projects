@@ -10,10 +10,8 @@ import 'package:flutter/services.dart';
 
 class DocumentsScreen extends StatelessWidget {
   final String uid;
-  String selectedFilter = "All";
-  String searchQuery = "";
 
-  DocumentsScreen({super.key, required this.uid});
+  const DocumentsScreen({super.key, required this.uid});
 
   /// Function to generate and save the PDF
   Future<void> generateAndSavePdf(

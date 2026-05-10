@@ -534,3 +534,4 @@ class _CSMapMobileObeAssignmentState extends State<CSMapMobileObeAssignment> {
     );
   }
 }
+

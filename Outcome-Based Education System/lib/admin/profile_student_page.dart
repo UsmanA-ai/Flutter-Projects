@@ -32,19 +32,8 @@ class _AdminProfileSPageState extends State<AdminProfileSPage>{
   String? fetchedTAddress;
   String? fetchedTDistrict;
   String? fetchedTCity;
-  bool _isLoading = false;
-  bool isSearching = false;
-  //Search function from here..................
   Future<void> searchStudentData(String id) async {
-    setState(() {
-      _isLoading = true; // Show loading indicator
-    });
     try {
-      // Enable the search button and set isSearching to true
-      setState(() {
-        isSearching = true;
-      });
-
       print('Searching for student with ID: $id');
       // Reset fetched data
       fetchedBatch = null;
@@ -155,9 +144,6 @@ class _AdminProfileSPageState extends State<AdminProfileSPage>{
       );
     } finally {
       // Disable the search button and set isSearching back to false
-      setState(() {
-        isSearching = false;
-      });
     }
   }
   Future<void> deleteStudentData(String id) async {
@@ -436,7 +422,7 @@ class _AdminProfileSPageState extends State<AdminProfileSPage>{
                                             borderRadius: BorderRadius.circular(20),
                                             boxShadow: [
                                               BoxShadow(
-                                                color: Colors.blueGrey.withOpacity(0.5), // Shadow color
+                                                color: Colors.blueGrey.withAlpha(128), // Shadow color
                                                 spreadRadius: 3, // Spread radius
                                                 blurRadius: 5, // Blur radius
                                                 offset: const Offset(0, 2), // Offset in the x, y direction
@@ -461,7 +447,7 @@ class _AdminProfileSPageState extends State<AdminProfileSPage>{
                                             borderRadius: BorderRadius.circular(20),
                                             boxShadow: [
                                               BoxShadow(
-                                                color: Colors.blueGrey.withOpacity(0.5), // Shadow color
+                                                color: Colors.blueGrey.withAlpha(128), // Shadow color
                                                 spreadRadius: 3, // Spread radius
                                                 blurRadius: 5, // Blur radius
                                                 offset: const Offset(0, 2), // Offset in the x, y direction
@@ -508,7 +494,7 @@ class _AdminProfileSPageState extends State<AdminProfileSPage>{
                                             borderRadius: BorderRadius.circular(20),
                                             boxShadow: [
                                               BoxShadow(
-                                                color: Colors.blueGrey.withOpacity(0.5), // Shadow color
+                                                color: Colors.blueGrey.withAlpha(128), // Shadow color
                                                 spreadRadius: 3, // Spread radius
                                                 blurRadius: 5, // Blur radius
                                                 offset: const Offset(0, 2), // Offset in the x, y direction
@@ -686,3 +672,4 @@ class _AdminProfileSPageState extends State<AdminProfileSPage>{
     );
   }
 }
+

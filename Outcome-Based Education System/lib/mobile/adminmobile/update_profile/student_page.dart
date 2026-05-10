@@ -129,6 +129,7 @@ class _StudentUpdatePageState extends State<StudentUpdatePage> {
           'Tdistrict': presentdistrictcontroller.text.trim(),
         });
 
+        if (!mounted) return;
         _showMessageDialog('Success', 'Profile updated successfully');
         formkey.currentState!.reset();
         idcontroller.clear();
@@ -150,14 +151,18 @@ class _StudentUpdatePageState extends State<StudentUpdatePage> {
         presentaddresscontroller.clear();
         presentdistrictcontroller.clear();
       } else {
+        if (!mounted) return;
         _showMessageDialog('Error', 'No student found with this ID');
       }
     } catch (e) {
+      if (!mounted) return;
       _showMessageDialog('Error', 'Error updating profile: $e');
     } finally {
-      setState(() {
-        isLoading = false;
-      });
+      if (mounted) {
+        setState(() {
+          isLoading = false;
+        });
+      }
     }
   }
 
@@ -229,7 +234,7 @@ class _StudentUpdatePageState extends State<StudentUpdatePage> {
                               borderRadius: BorderRadius.circular(25),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.blueGrey.withOpacity(0.5), // Shadow color
+                                  color: Colors.blueGrey.withAlpha(128), // Shadow color
                                   spreadRadius: 3, // Spread radius
                                   blurRadius: 5, // Blur radius
                                   offset:  const Offset(0, 2), // Offset in the x, y direction
@@ -1073,7 +1078,7 @@ class _StudentUpdatePageState extends State<StudentUpdatePage> {
                               borderRadius: BorderRadius.circular(25),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.blueGrey.withOpacity(0.5), // Shadow color
+                                  color: Colors.blueGrey.withAlpha(128), // Shadow color
                                   spreadRadius: 3, // Spread radius
                                   blurRadius: 5, // Blur radius
                                   offset:  const Offset(0, 2), // Offset in the x, y direction
@@ -1106,3 +1111,4 @@ class _StudentUpdatePageState extends State<StudentUpdatePage> {
     );
   }
 }
+

@@ -25,16 +25,20 @@ class _MobileAdminSignupPageState extends State<MobileAdminSignupPage> {
           .createUserWithEmailAndPassword(
           email: email.text.trim(), password: password.text);
       if (userCredential.user != null) {
+        if (!mounted) return;
         Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) => const MobileAdminDashboard()));
         _showMessageDialog('Success', 'Signup successful');
       }
     } on FirebaseAuthException catch (e) {
+      if (!mounted) return;
       _showMessageDialog('Error', e.code);
     } finally {
-      setState(() {
-        _isLoading = false;
-      });
+      if (mounted) {
+        setState(() {
+          _isLoading = false;
+        });
+      }
     }
   }
 
@@ -243,11 +247,11 @@ class _MobileAdminSignupPageState extends State<MobileAdminSignupPage> {
                   left: MediaQuery.of(context).size.width < 600
                       ? MediaQuery.of(context).size.width * 0.3
                       : MediaQuery.of(context).size.width * 0.9 / 2,
-                  child: Text(
+                    child: Text(
                     "Admin SignUp",
                     style: TextStyle(
                       fontSize: 25,
-                      color: Colors.white.withOpacity(1.0),
+                      color: Colors.white.withAlpha(255),
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -408,7 +412,7 @@ class _MobileAdminSignupPageState extends State<MobileAdminSignupPage> {
                                 boxShadow: [
                                   BoxShadow(
                                     color: Colors.blueGrey
-                                        .withOpacity(0.5), // Shadow color
+                                        .withAlpha(128), // Shadow color
                                     spreadRadius: 3, // Spread radius
                                     blurRadius: 5, // Blur radius
                                     offset: const Offset(
@@ -481,3 +485,4 @@ class _MobileAdminSignupPageState extends State<MobileAdminSignupPage> {
     );
   }
 }
+

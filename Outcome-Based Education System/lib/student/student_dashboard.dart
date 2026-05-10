@@ -577,7 +577,6 @@
 //   }
 // }
 
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -600,7 +599,6 @@ class _StudentDashBoardState extends State<StudentDashBoard> {
   @override
   void initState() {
     super.initState();
-    log('message1');
     userDataFuture = fetchUserData();
   }
 
@@ -611,7 +609,6 @@ class _StudentDashBoardState extends State<StudentDashBoard> {
         .doc(user!.uid)
         .get();
     String studentId = snapshot['Id'];
-    String program = snapshot['Program'];
     coursesFuture = fetchUserCourses(studentId);
     return snapshot.data() as Map<String, dynamic>;
   }
@@ -1126,3 +1123,4 @@ class _StudentDashBoardState extends State<StudentDashBoard> {
     );
   }
 }
+

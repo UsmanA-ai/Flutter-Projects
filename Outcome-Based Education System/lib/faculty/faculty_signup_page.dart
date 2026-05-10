@@ -101,7 +101,7 @@
 //                     "Admin Sign Up",
 //                     style: TextStyle(
 //                       fontSize: 25,
-//                       color: Colors.white.withOpacity(1.0),
+//                       color: Colors.white.withAlpha(255),
 //                       fontWeight: FontWeight.bold,
 //                     ),
 //                   ),
@@ -262,7 +262,7 @@
 //                                 boxShadow: [
 //                                   BoxShadow(
 //                                     color: Colors.blueGrey
-//                                         .withOpacity(0.5), // Shadow color
+//                                         .withAlpha(128), // Shadow color
 //                                     spreadRadius: 3, // Spread radius
 //                                     blurRadius: 5, // Blur radius
 //                                     offset: const Offset(
@@ -334,3 +334,4 @@
 //     );
 //   }
 // }
+

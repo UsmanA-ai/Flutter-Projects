@@ -634,3 +634,4 @@ class _CourseMobilePageState extends State<CourseMobilePage> {
     );
   }
 }
+

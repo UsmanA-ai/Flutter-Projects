@@ -701,3 +701,4 @@ class FacultyStudentsDetail extends StatelessWidget {
     );
   }
 }
+

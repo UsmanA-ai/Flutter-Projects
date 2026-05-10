@@ -332,7 +332,7 @@
 //                                               borderRadius: BorderRadius.circular(25),
 //                                               boxShadow: [
 //                                                 BoxShadow(
-//                                                   color: Colors.blueGrey.withOpacity(0.5),
+//                                                   color: Colors.blueGrey.withAlpha(128),
 //                                                   spreadRadius: 3,
 //                                                   blurRadius: 5,
 //                                                   offset: const Offset(0, 2),
@@ -557,4 +557,5 @@ class _AdminStudentNoticeBoardState extends State<AdminStudentNoticeBoard> {
     );
   }
 }
+
 

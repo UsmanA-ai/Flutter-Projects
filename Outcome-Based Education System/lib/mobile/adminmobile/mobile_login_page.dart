@@ -25,6 +25,7 @@ class _MobileAdminLoginPageState extends State<MobileAdminLoginPage> {
           .signInWithEmailAndPassword(
               email: email.text.trim(), password: password.text);
       if (userCredential.user != null) {
+        if (!mounted) return;
         Navigator.pushReplacement(
             context,
             MaterialPageRoute(
@@ -83,7 +84,6 @@ class _MobileAdminLoginPageState extends State<MobileAdminLoginPage> {
 
   Future<void> _showUpdatePasswordDialog() async {
     String newPassword = '';
-    String confirmPassword = '';
 
     showDialog<void>(
       context: context,
@@ -113,9 +113,6 @@ class _MobileAdminLoginPageState extends State<MobileAdminLoginPage> {
                   },
                 ),
                 TextFormField(
-                  onChanged: (value) {
-                    confirmPassword = value;
-                  },
                   obscureText: true,
                   decoration: const InputDecoration(
                     labelText: 'Confirm Password',
@@ -170,6 +167,7 @@ class _MobileAdminLoginPageState extends State<MobileAdminLoginPage> {
       });
       // Show success message
       await _showMessageDialog('Success', 'Password reset email sent');
+      if (!mounted) return;
       Navigator.push(
           context,
           MaterialPageRoute(
@@ -248,7 +246,7 @@ class _MobileAdminLoginPageState extends State<MobileAdminLoginPage> {
                     "Admin Login",
                     style: TextStyle(
                       fontSize: 25,
-                      color: Colors.white.withOpacity(1.0),
+                      color: Colors.white.withAlpha(255),
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -409,7 +407,7 @@ class _MobileAdminLoginPageState extends State<MobileAdminLoginPage> {
                                 boxShadow: [
                                   BoxShadow(
                                     color: Colors.blueGrey
-                                        .withOpacity(0.5), // Shadow color
+                                        .withAlpha(128), // Shadow color
                                     spreadRadius: 3, // Spread radius
                                     blurRadius: 5, // Blur radius
                                     offset: const Offset(
@@ -482,3 +480,4 @@ class _MobileAdminLoginPageState extends State<MobileAdminLoginPage> {
     );
   }
 }
+

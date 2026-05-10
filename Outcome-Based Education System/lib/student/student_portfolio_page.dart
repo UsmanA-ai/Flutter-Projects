@@ -127,6 +127,7 @@ class _StudentPortfolioPageState extends State<StudentPortfolioPage> {
         'timestamp': FieldValue.serverTimestamp(),
       });
 
+      if (!mounted) return;
       Navigator.pop(context);
       // Reset fields except for student ID
       descriptionController.clear();
@@ -151,6 +152,7 @@ class _StudentPortfolioPageState extends State<StudentPortfolioPage> {
         ),
       );
     } catch (e) {
+      if (!mounted) return;
       Navigator.pop(context);
       showDialog(
         context: context,
@@ -588,8 +590,7 @@ class _StudentPortfolioPageState extends State<StudentPortfolioPage> {
                                                             BoxShadow(
                                                               color: Colors
                                                                   .blueGrey
-                                                                  .withOpacity(
-                                                                      0.5), // Shadow color
+                                                                  .withAlpha(128), // Shadow color
                                                               spreadRadius:
                                                                   3, // Spread radius
                                                               blurRadius:
@@ -643,8 +644,7 @@ class _StudentPortfolioPageState extends State<StudentPortfolioPage> {
                                                             BoxShadow(
                                                               color: Colors
                                                                   .blueGrey
-                                                                  .withOpacity(
-                                                                      0.5), // Shadow color
+                                                                  .withValues(alpha: 0.5), // Shadow color
                                                               spreadRadius:
                                                                   3, // Spread radius
                                                               blurRadius:
@@ -689,8 +689,7 @@ class _StudentPortfolioPageState extends State<StudentPortfolioPage> {
                                                             BoxShadow(
                                                               color: Colors
                                                                   .blueGrey
-                                                                  .withOpacity(
-                                                                      0.5), // Shadow color
+                                                                  .withValues(alpha: 0.5), // Shadow color
                                                               spreadRadius:
                                                                   3, // Spread radius
                                                               blurRadius:
@@ -755,3 +754,4 @@ class _StudentPortfolioPageState extends State<StudentPortfolioPage> {
     );
   }
 }
+

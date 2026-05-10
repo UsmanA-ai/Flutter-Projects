@@ -193,9 +193,11 @@ class Studentportfoliofolder extends StatelessWidget {
   }
 
   Future<void> _launchURL(BuildContext context, String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
+    final Uri uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
     } else {
+      if (!context.mounted) return;
       showDialog(
         context: context,
         builder: (BuildContext context) => AlertDialog(
@@ -212,3 +214,4 @@ class Studentportfoliofolder extends StatelessWidget {
     }
   }
 }
+

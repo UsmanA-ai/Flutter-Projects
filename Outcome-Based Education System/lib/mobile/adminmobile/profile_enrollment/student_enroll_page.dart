@@ -282,7 +282,7 @@ class _AdminSEnrollMobilePageState extends State<AdminSEnrollMobilePage> {
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.blueGrey
-                                      .withOpacity(0.5), // Shadow color
+                                      .withAlpha(128), // Shadow color
                                   spreadRadius: 3, // Spread radius
                                   blurRadius: 5, // Blur radius
                                   offset: const Offset(
@@ -1241,7 +1241,7 @@ class _AdminSEnrollMobilePageState extends State<AdminSEnrollMobilePage> {
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.blueGrey
-                                      .withOpacity(0.5), // Shadow color
+                                      .withAlpha(128), // Shadow color
                                   spreadRadius: 3, // Spread radius
                                   blurRadius: 5, // Blur radius
                                   offset: const Offset(
@@ -1271,7 +1271,7 @@ class _AdminSEnrollMobilePageState extends State<AdminSEnrollMobilePage> {
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.grey
-                                      .withOpacity(0.5), // Shadow color
+                                      .withAlpha(128), // Shadow color
                                   spreadRadius: 3, // Spread radius
                                   blurRadius: 5, // Blur radius
                                   offset: const Offset(
@@ -1310,3 +1310,4 @@ class _AdminSEnrollMobilePageState extends State<AdminSEnrollMobilePage> {
     );
   }
 }
+

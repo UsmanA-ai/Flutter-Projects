@@ -24,6 +24,7 @@ class _StudentLoginPageState extends State<StudentLoginPage> {
           .signInWithEmailAndPassword(
               email: email.text.trim(), password: password.text);
       if (userCredential.user != null) {
+        if (!mounted) return;
         Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) => const StudentDashBoard()));
         // _showMessageDialog('Success', 'Login successful');
@@ -77,12 +78,10 @@ class _StudentLoginPageState extends State<StudentLoginPage> {
         ) ??
         false;
   }
-
   Future<void> _showUpdatePasswordDialog() async {
     String newPassword = '';
-    String confirmPassword = '';
 
-    showDialog<void>(
+    await showDialog<void>(
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
@@ -110,9 +109,6 @@ class _StudentLoginPageState extends State<StudentLoginPage> {
                   },
                 ),
                 TextFormField(
-                  onChanged: (value) {
-                    confirmPassword = value;
-                  },
                   obscureText: true,
                   decoration: const InputDecoration(
                     labelText: 'Confirm Password',
@@ -235,7 +231,7 @@ class _StudentLoginPageState extends State<StudentLoginPage> {
                     "Student Login",
                     style: TextStyle(
                       fontSize: 25,
-                      color: Colors.white.withOpacity(1.0),
+                      color: Colors.white.withAlpha(255),
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -388,7 +384,7 @@ class _StudentLoginPageState extends State<StudentLoginPage> {
                                     borderRadius: BorderRadius.circular(25),
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Colors.blueGrey.withOpacity(0.5),
+                                        color: Colors.blueGrey.withAlpha(128),
                                         spreadRadius: 3,
                                         blurRadius: 5,
                                         offset: const Offset(0, 2),
@@ -423,3 +419,4 @@ class _StudentLoginPageState extends State<StudentLoginPage> {
     );
   }
 }
+

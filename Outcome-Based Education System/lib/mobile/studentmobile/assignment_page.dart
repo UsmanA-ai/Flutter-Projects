@@ -13,3 +13,4 @@ class _StudentMobileAssignmentPageState extends State<StudentMobileAssignmentPag
     return const Placeholder();
   }
 }
+

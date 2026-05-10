@@ -24,6 +24,7 @@ class _MobileStudentLoginPageState extends State<MobileStudentLoginPage> {
           .signInWithEmailAndPassword(
               email: email.text.trim(), password: password.text);
       if (userCredential.user != null) {
+        if (!mounted) return;
         Navigator.pushReplacement(
             context,
             MaterialPageRoute(
@@ -82,7 +83,6 @@ class _MobileStudentLoginPageState extends State<MobileStudentLoginPage> {
 
   Future<void> _showUpdatePasswordDialog() async {
     String newPassword = '';
-    String confirmPassword = '';
 
     showDialog<void>(
       context: context,
@@ -112,9 +112,6 @@ class _MobileStudentLoginPageState extends State<MobileStudentLoginPage> {
                   },
                 ),
                 TextFormField(
-                  onChanged: (value) {
-                    confirmPassword = value;
-                  },
                   obscureText: true,
                   decoration: const InputDecoration(
                     labelText: 'Confirm Password',
@@ -235,7 +232,7 @@ class _MobileStudentLoginPageState extends State<MobileStudentLoginPage> {
                     "Student Login",
                     style: TextStyle(
                       fontSize: 25,
-                      color: Colors.white.withOpacity(1.0),
+                      color: Colors.white.withAlpha(255),
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -388,7 +385,7 @@ class _MobileStudentLoginPageState extends State<MobileStudentLoginPage> {
                                     borderRadius: BorderRadius.circular(25),
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Colors.blueGrey.withOpacity(0.5),
+                                        color: Colors.blueGrey.withAlpha(128),
                                         spreadRadius: 3,
                                         blurRadius: 5,
                                         offset: const Offset(0, 2),
@@ -423,3 +420,4 @@ class _MobileStudentLoginPageState extends State<MobileStudentLoginPage> {
     );
   }
 }
+

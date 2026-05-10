@@ -24,6 +24,7 @@ class _AdminSignupPageState extends State<AdminSignupPage> {
           .createUserWithEmailAndPassword(
               email: email.text.trim(), password: password.text);
       if (userCredential.user != null) {
+        if (!mounted) return;
         Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) => const AdminDashBoard()));
         _showMessageDialog('Success', 'Signup successful');
@@ -245,7 +246,7 @@ class _AdminSignupPageState extends State<AdminSignupPage> {
                     "Admin SignUp",
                     style: TextStyle(
                       fontSize: 25,
-                      color: Colors.white.withOpacity(1.0),
+                      color: Colors.white.withAlpha(255),
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -406,7 +407,7 @@ class _AdminSignupPageState extends State<AdminSignupPage> {
                                 boxShadow: [
                                   BoxShadow(
                                     color: Colors.blueGrey
-                                        .withOpacity(0.5), // Shadow color
+                                        .withAlpha(128), // Shadow color
                                     spreadRadius: 3, // Spread radius
                                     blurRadius: 5, // Blur radius
                                     offset: const Offset(
@@ -478,3 +479,4 @@ class _AdminSignupPageState extends State<AdminSignupPage> {
     );
   }
 }
+

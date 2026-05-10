@@ -24,6 +24,7 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
           .signInWithEmailAndPassword(
               email: email.text.trim(), password: password.text);
       if (userCredential.user != null) {
+        if (!mounted) return;
         Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) => const AdminDashBoard()));
         // _showMessageDialog('Success', 'Login successful');
@@ -77,12 +78,10 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
         ) ??
         false;
   }
-
   Future<void> _showUpdatePasswordDialog() async {
     String newPassword = '';
-    String confirmPassword = '';
 
-    showDialog<void>(
+    await showDialog<void>(
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
@@ -110,9 +109,6 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
                   },
                 ),
                 TextFormField(
-                  onChanged: (value) {
-                    confirmPassword = value;
-                  },
                   obscureText: true,
                   decoration: const InputDecoration(
                     labelText: 'Confirm Password',
@@ -167,6 +163,7 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
       });
       // Show success message
       await _showMessageDialog('Success', 'Password reset email sent');
+      if (!mounted) return;
       Navigator.push(
           context,
           MaterialPageRoute(
@@ -245,7 +242,7 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
                     "Admin Login",
                     style: TextStyle(
                       fontSize: 25,
-                      color: Colors.white.withOpacity(1.0),
+                      color: Colors.white.withAlpha(255),
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -406,7 +403,7 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
                                 boxShadow: [
                                   BoxShadow(
                                     color: Colors.blueGrey
-                                        .withOpacity(0.5), // Shadow color
+                                        .withAlpha(128), // Shadow color
                                     spreadRadius: 3, // Spread radius
                                     blurRadius: 5, // Blur radius
                                     offset: const Offset(
@@ -478,3 +475,4 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
     );
   }
 }
+

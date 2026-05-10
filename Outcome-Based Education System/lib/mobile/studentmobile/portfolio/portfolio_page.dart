@@ -437,8 +437,7 @@ class _StudentMobilePortfolioPageState
                                           borderRadius: BorderRadius.circular(25),
                                           boxShadow: [
                                             BoxShadow(
-                                              color: Colors.blueGrey.withOpacity(
-                                                  0.5), // Shadow color
+                                              color: Colors.blueGrey.withValues(alpha: 0.5), // Shadow color
                                               spreadRadius: 3, // Spread radius
                                               blurRadius: 5, // Blur radius
                                               offset: const Offset(0,
@@ -475,8 +474,7 @@ class _StudentMobilePortfolioPageState
                                           borderRadius: BorderRadius.circular(25),
                                           boxShadow: [
                                             BoxShadow(
-                                              color: Colors.blueGrey.withOpacity(
-                                                  0.5), // Shadow color
+                                              color: Colors.blueGrey.withValues(alpha: 0.5), // Shadow color
                                               spreadRadius: 3, // Spread radius
                                               blurRadius: 5, // Blur radius
                                               offset: const Offset(0,
@@ -506,8 +504,7 @@ class _StudentMobilePortfolioPageState
                                           borderRadius: BorderRadius.circular(25),
                                           boxShadow: [
                                             BoxShadow(
-                                              color: Colors.blueGrey.withOpacity(
-                                                  0.5), // Shadow color
+                                              color: Colors.blueGrey.withValues(alpha: 0.5), // Shadow color
                                               spreadRadius: 3, // Spread radius
                                               blurRadius: 5, // Blur radius
                                               offset: const Offset(0,
@@ -552,3 +549,4 @@ class _StudentMobilePortfolioPageState
     );
   }
 }
+

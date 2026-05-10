@@ -453,8 +453,7 @@ class _AdminFacultyNoticeBoardState extends State<AdminFacultyNoticeBoard> {
                                                       boxShadow: [
                                                         BoxShadow(
                                                           color: Colors.blueGrey
-                                                              .withOpacity(
-                                                                  0.5), // Shadow color
+                                                              .withValues(alpha: 0.5), // Shadow color
                                                           spreadRadius:
                                                               3, // Spread radius
                                                           blurRadius:
@@ -503,3 +502,4 @@ class _AdminFacultyNoticeBoardState extends State<AdminFacultyNoticeBoard> {
         ));
   }
 }
+

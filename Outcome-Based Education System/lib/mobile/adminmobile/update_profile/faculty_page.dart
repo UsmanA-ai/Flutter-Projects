@@ -192,7 +192,7 @@ class _FacultyUpdatePageState extends State<FacultyUpdatePage> {
                               borderRadius: BorderRadius.circular(25),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.blueGrey.withOpacity(0.5), // Shadow color
+                                  color: Colors.blueGrey.withAlpha(128), // Shadow color
                                   spreadRadius: 3, // Spread radius
                                   blurRadius: 5, // Blur radius
                                   offset: const Offset(0, 2), // Offset in the x, y direction
@@ -766,7 +766,7 @@ class _FacultyUpdatePageState extends State<FacultyUpdatePage> {
                           borderRadius: BorderRadius.circular(25),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.blueGrey.withOpacity(0.5), // Shadow color
+                              color: Colors.blueGrey.withAlpha(128), // Shadow color
                               spreadRadius: 3, // Spread radius
                               blurRadius: 5, // Blur radius
                               offset:  const Offset(0, 2), // Offset in the x, y direction
@@ -797,3 +797,4 @@ class _FacultyUpdatePageState extends State<FacultyUpdatePage> {
     );
   }
 }
+

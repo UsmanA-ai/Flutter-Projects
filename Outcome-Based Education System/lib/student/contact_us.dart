@@ -481,8 +481,7 @@ class _Contact_usState extends State<Contact_us> {
                                                               BoxShadow(
                                                                 color: Colors
                                                                     .blueGrey
-                                                                    .withOpacity(
-                                                                        0.5), // Shadow color
+                                                                    .withValues(alpha: 0.5), // Shadow color
                                                                 spreadRadius:
                                                                     3, // Spread radius
                                                                 blurRadius:
@@ -534,3 +533,4 @@ class _Contact_usState extends State<Contact_us> {
         ));
   }
 }
+

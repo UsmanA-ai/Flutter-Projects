@@ -345,7 +345,7 @@ class _UploadfolderState extends State<Uploadfolder> {
                                               boxShadow: [
                                                 BoxShadow(
                                                   color: Colors.blueGrey
-                                                      .withOpacity(0.5),
+                                                      .withAlpha(128),
                                                   spreadRadius: 3,
                                                   blurRadius: 5,
                                                   offset: const Offset(0, 2),
@@ -389,7 +389,7 @@ class _UploadfolderState extends State<Uploadfolder> {
                                               boxShadow: [
                                                 BoxShadow(
                                                   color: Colors.blueGrey
-                                                      .withOpacity(0.5),
+                                                      .withAlpha(128),
                                                   spreadRadius: 3,
                                                   blurRadius: 5,
                                                   offset: const Offset(0, 2),
@@ -471,3 +471,4 @@ class _UploadfolderState extends State<Uploadfolder> {
     );
   }
 }
+

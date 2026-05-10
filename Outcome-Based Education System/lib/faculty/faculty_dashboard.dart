@@ -72,22 +72,16 @@ class _FacultyDashBoardState extends State<FacultyDashBoard> {
             courseCode == null ||
             creditHours == null ||
             facultyName == null) {
-          print(
+          debugPrint(
               "Error: One or more course details are null for course ${doc.id}");
           continue;
-        }
-
-        if (program == 'BS(SE)') {
-          totalSECourses++;
-        } else if (program == 'BS(CS)') {
-          totalCSCourses++;
         }
 
         var studentId = data['Studentid'];
         if (studentId is String && studentId.isNotEmpty) {
           uniqueStudentIds.add(studentId);
         } else {
-          print(
+          debugPrint(
               "Error: Studentid is not a string or is empty for course ${doc.id}");
         }
 
@@ -111,7 +105,7 @@ class _FacultyDashBoardState extends State<FacultyDashBoard> {
       totalStudents = uniqueStudentIds.length;
       setState(() {});
     } catch (e) {
-      print("Error fetching data: $e");
+      debugPrint("Error fetching data: $e");
     }
   }
 
@@ -588,3 +582,4 @@ class _FacultyDashBoardState extends State<FacultyDashBoard> {
     );
   }
 }
+
