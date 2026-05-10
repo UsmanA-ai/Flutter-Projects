@@ -13,7 +13,7 @@ class DocumentsScreen extends StatelessWidget {
   String selectedFilter = "All";
   String searchQuery = "";
 
-  DocumentsScreen({required this.uid});
+  DocumentsScreen({super.key, required this.uid});
 
   /// Function to generate and save the PDF
   Future<void> generateAndSavePdf(
@@ -183,9 +183,7 @@ class DocumentsScreen extends StatelessWidget {
     try {
       // Get the external storage directory
       Directory? directory = await getExternalStorageDirectory();
-      if (directory == null) {
-        directory = await getApplicationDocumentsDirectory();
-      }
+      directory ??= await getApplicationDocumentsDirectory();
 
       // Path to save the PDF
       String pdfPath = "${directory.path}/Documents/$refNo.pdf";

@@ -8,7 +8,7 @@ class DetectionScreen extends StatefulWidget {
   final String modelType;
   final String title;
 
-  const DetectionScreen({Key? key, required this.modelType, required this.title}) : super(key: key);
+  const DetectionScreen({super.key, required this.modelType, required this.title});
 
   @override
   _DetectionScreenState createState() => _DetectionScreenState();

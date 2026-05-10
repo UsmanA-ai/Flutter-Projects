@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../components.dart';
 import 'cs_map_finalexam.dart';
-import 'cs_plos_page.dart';
 
 class FacultyCSFinalFolder extends StatelessWidget {
   final String program;

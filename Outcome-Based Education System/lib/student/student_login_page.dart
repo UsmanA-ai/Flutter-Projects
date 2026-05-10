@@ -28,7 +28,7 @@ class _StudentLoginPageState extends State<StudentLoginPage> {
             MaterialPageRoute(builder: (context) => const StudentDashBoard()));
         // _showMessageDialog('Success', 'Login successful');
       }
-    } on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException {
       // _showMessageDialog('Error', e.code);
     } finally {
       setState(() {

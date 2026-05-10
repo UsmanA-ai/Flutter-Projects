@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:myapp/faculty/faculty_signup_page.dart';
 import 'faculty_dashboard.dart';
 
 class FacultyLoginPage extends StatefulWidget {

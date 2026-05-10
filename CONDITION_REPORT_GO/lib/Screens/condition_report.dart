@@ -7,7 +7,6 @@ import 'package:condition_report/Screens/outstanding_photos.dart';
 import 'package:condition_report/Screens/photo_stream.dart';
 import 'package:condition_report/Screens/property_details.dart';
 import 'package:condition_report/common_widgets/submit_button.dart';
-import 'package:condition_report/provider/assessment_provider.dart';
 import 'package:condition_report/Screens/documents_screen.dart';
 import 'package:condition_report/services/firestore_services.dart';
 import 'package:firebase_auth/firebase_auth.dart';

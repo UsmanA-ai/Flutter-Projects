@@ -6,7 +6,7 @@ void main() {
 }
 
 class ClinikScanWeb extends StatelessWidget {
-  const ClinikScanWeb({Key? key}) : super(key: key);
+  const ClinikScanWeb({super.key});
 
   @override
   Widget build(BuildContext context) {

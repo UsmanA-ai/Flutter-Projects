@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:myapp/faculty/se_map_quiz.dart';
-import 'package:myapp/faculty/se_plos_page.dart';
 import '../components.dart';
 
 class FacultySEQuizFolder extends StatelessWidget {

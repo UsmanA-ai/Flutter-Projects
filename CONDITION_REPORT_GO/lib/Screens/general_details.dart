@@ -56,7 +56,7 @@ class _GeneralDetailsState extends State<GeneralDetails> {
   String? selectedImagePath;
   bool isLoading = false; // Track loading state for editing
 
-  fetchGD() async {
+  Future<void> fetchGD() async {
     final img = await FireStoreServices().fetchGDImages();
     imgCount = img.length;
 

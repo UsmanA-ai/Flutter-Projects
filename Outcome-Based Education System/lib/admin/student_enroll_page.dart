@@ -16,7 +16,7 @@ class AdminSEnrollPage extends StatefulWidget {
 }
 
 class _AdminSEnrollPageState extends State<AdminSEnrollPage> {
-  List<String> _genders = ['Male', 'Female', 'Other'];
+  final List<String> _genders = ['Male', 'Female', 'Other'];
   Uint8List? _image;
   final TextEditingController cnic = TextEditingController();
   final TextEditingController dob = TextEditingController();

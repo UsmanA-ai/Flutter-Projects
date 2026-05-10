@@ -74,7 +74,7 @@ class _SEMapObeAssignmentState extends State<SEMapObeAssignment> {
       setState(() {
         // assignmentList = assignmentSnapshot.docs.map((doc) => doc.data()).toList();
         assignmentList = assignmentSnapshot.docs.map((doc) {
-          var data = doc.data() as Map<String, dynamic>;
+          var data = doc.data();
           data['id'] = doc.id; // Add the document ID to the data map
           return data;
         }).toList();
