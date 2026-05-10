@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:typed_data';
 import 'dart:ui';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'ml_service.dart';
 
 class DetectionScreen extends StatefulWidget {
@@ -64,6 +65,40 @@ class _DetectionScreenState extends State<DetectionScreen> {
       setState(() {
         _result = res;
       });
+
+      // Upload to Supabase Storage and Save to History
+      final user = Supabase.instance.client.auth.currentUser;
+      if (user != null && _image != null) {
+        try {
+          final fileName = '${DateTime.now().millisecondsSinceEpoch}.png';
+          final path = '${user.id}/$fileName';
+          
+          // 1. Upload the image file
+          await Supabase.instance.client.storage
+              .from('analysis-images')
+              .uploadBinary(
+                path, 
+                _imageBytes!,
+                fileOptions: const FileOptions(contentType: 'image/png'),
+              );
+          
+          // 2. Get the public URL
+          final imageUrl = Supabase.instance.client.storage
+              .from('analysis-images')
+              .getPublicUrl(path);
+              
+          // 3. Save the record with the image URL
+          await Supabase.instance.client.from('analysis_history').insert({
+            'user_id': user.id,
+            'model_type': widget.modelType,
+            'title': widget.title,
+            'result': res,
+            'image_url': imageUrl,
+          });
+        } catch (e) {
+          debugPrint('Error saving history or image: $e');
+        }
+      }
     } catch (e) {
       setState(() {
         _result = 'Error during analysis: $e';

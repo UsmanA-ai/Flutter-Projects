@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'auth_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -28,7 +29,28 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
 
   @override
   Widget build(BuildContext context) {
+    final user = Supabase.instance.client.auth.currentUser;
+    
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        actions: [
+          if (user != null)
+            Padding(
+              padding: const EdgeInsets.only(right: 16.0),
+              child: TextButton.icon(
+                onPressed: () async {
+                  await Supabase.instance.client.auth.signOut();
+                  setState(() {});
+                },
+                icon: const Icon(Icons.logout, color: Colors.white70),
+                label: const Text('Logout', style: TextStyle(color: Colors.white70)),
+              ),
+            ),
+        ],
+      ),
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -157,6 +179,14 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
   }
 
   Widget _buildAnalysisHistory() {
+    final session = Supabase.instance.client.auth.currentSession;
+    
+    if (session == null) {
+      return const SizedBox.shrink(); 
+    }
+
+    // This would typically fetch from Supabase 'analysis_history' table
+    // For now, we show the UI structure
     return Container(
       width: double.infinity,
       constraints: const BoxConstraints(maxWidth: 632), // 300 + 300 + 32 spacing

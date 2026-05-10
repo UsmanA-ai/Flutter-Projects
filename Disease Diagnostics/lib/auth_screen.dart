@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'detection_screen.dart';
 
 class AuthScreen extends StatefulWidget {
@@ -19,19 +20,66 @@ class _AuthScreenState extends State<AuthScreen> {
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  bool _isLoading = false;
 
-  void _submit() {
+  Future<void> _submit() async {
     if (_formKey.currentState!.validate()) {
-      // Mock authentication success
-      Navigator.pushReplacement(
-        context,
-        PageRouteBuilder(
-          pageBuilder: (context, animation, secondaryAnimation) => DetectionScreen(modelType: widget.modelType, title: widget.title),
-          transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            return FadeTransition(opacity: animation, child: child);
-          },
-        ),
+      setState(() => _isLoading = true);
+      try {
+        if (_isLogin) {
+          await Supabase.instance.client.auth.signInWithPassword(
+            email: _emailController.text.trim(),
+            password: _passwordController.text.trim(),
+          );
+        } else {
+          await Supabase.instance.client.auth.signUp(
+            email: _emailController.text.trim(),
+            password: _passwordController.text.trim(),
+            data: {'full_name': _nameController.text.trim()},
+          );
+        }
+        
+        if (mounted) {
+          Navigator.pushReplacement(
+            context,
+            PageRouteBuilder(
+              pageBuilder: (context, animation, secondaryAnimation) => DetectionScreen(modelType: widget.modelType, title: widget.title),
+              transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                return FadeTransition(opacity: animation, child: child);
+              },
+            ),
+          );
+        }
+      } on AuthException catch (e) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(e.message), backgroundColor: Colors.redAccent),
+          );
+        }
+      } catch (e) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('An unexpected error occurred'), backgroundColor: Colors.redAccent),
+          );
+        }
+      } finally {
+        if (mounted) setState(() => _isLoading = false);
+      }
+    }
+  }
+
+  Future<void> _signInWithGoogle() async {
+    try {
+      await Supabase.instance.client.auth.signInWithOAuth(
+        OAuthProvider.google,
+        queryParams: {'prompt': 'select_account'},
       );
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Google Sign-In failed'), backgroundColor: Colors.redAccent),
+        );
+      }
     }
   }
 
@@ -139,10 +187,12 @@ class _AuthScreenState extends State<AuthScreen> {
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                               elevation: 5,
                             ),
-                            child: Text(
-                              _isLogin ? 'Login' : 'Sign Up',
-                              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, letterSpacing: 1),
-                            ),
+                            child: _isLoading 
+                                ? const SizedBox(height: 20, width: 20, child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2))
+                                : Text(
+                                    _isLogin ? 'Login' : 'Sign Up',
+                                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, letterSpacing: 1),
+                                  ),
                           ),
                         ),
                         
@@ -152,7 +202,7 @@ class _AuthScreenState extends State<AuthScreen> {
                           width: double.infinity,
                           height: 50,
                           child: OutlinedButton.icon(
-                            onPressed: _submit,
+                            onPressed: _isLoading ? null : _signInWithGoogle,
                             icon: const Icon(Icons.g_mobiledata, size: 36, color: Colors.white),
                             label: const Text(
                               'Continue with Google',
