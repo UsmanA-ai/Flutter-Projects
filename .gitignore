@@ -1,6 +1,17 @@
-# IDEs and Editors
+# Secrets & API Keys (Universal)
+**/lib/api_keys.dart
+**/*.dart.example
+**/.env*
+
+# Supabase (Universal)
+**/supabase/.branches
+**/supabase/.temp
+
+# IDEs, System, and Dependencies
 .idea/
 .vscode/
-Disease Diagnostics/lib/api_keys.dart
-.vscode/
 *.iml
+node_modules/
+.DS_Store
+build/
+.dart_tool/

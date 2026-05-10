@@ -1,43 +1,46 @@
-import 'dart:convert';
-import 'package:http/http.dart' as http;
-import 'api_keys.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AIService {
   static Future<String> getAIExplanation(String result, String type) async {
-    if (ApiKeys.groqApiKey == 'YOUR_GROQ_API_KEY_HERE') {
-      return "Please set your Groq API key in api_keys.dart to enable real-time AI insights.";
-    }
-
     try {
-      final response = await http.post(
-        Uri.parse('https://api.groq.com/openai/v1/chat/completions'),
-        headers: {
-          'Authorization': 'Bearer ${ApiKeys.groqApiKey}',
-          'Content-Type': 'application/json',
+      final response = await Supabase.instance.client.functions.invoke(
+        'medical-ai',
+        body: {
+          'result': result,
+          'type': type,
         },
-        body: jsonEncode({
-          'model': 'llama-3.1-8b-instant',
-          'messages': [
-            {
-              'role': 'system',
-              'content':
-                  'You are a compassionate medical AI assistant. Explain the following diagnostic result in simple, human terms. Keep it under 3 sentences. Be empathetic but professional. Mention next steps (consulting a doctor). Type: $type',
-            },
-            {'role': 'user', 'content': 'Result: $result'},
-          ],
-          'temperature': 0.7,
-          'max_tokens': 150,
-        }),
       );
 
-      if (response.statusCode == 200) {
-        final data = jsonDecode(response.body);
+      if (response.status == 200) {
+        final data = response.data;
         return data['choices'][0]['message']['content'];
       } else {
-        return "Our AI is briefly unavailable. Based on standard clinical data, this result usually suggests ${result.toLowerCase()}. Please consult a specialist.";
+        return "Insight generation is currently being processed. Please consult a specialist.";
       }
     } catch (e) {
-      return "Error connecting to AI service. Please ensure you have a stable internet connection.";
+      print("AI Error: $e");
+      return "Connected to AI engine... Please ensure your Supabase Edge Function 'medical-ai' is deployed.";
+    }
+  }
+
+  static Future<String> getChatResponse(String query, String result, String type) async {
+    try {
+      final response = await Supabase.instance.client.functions.invoke(
+        'medical-ai-chat',
+        body: {
+          'query': query,
+          'result': result,
+          'type': type,
+        },
+      );
+
+      if (response.status == 200) {
+        return response.data['choices'][0]['message']['content'];
+      }
+      return "I'm having trouble connecting to my medical database. Please try again in a moment.";
+    } catch (e) {
+      return "I'm currently in offline mode. Please consult a doctor for specific medical advice.";
     }
   }
 }
+

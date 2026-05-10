@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'auth_screen.dart';
 import 'detection_screen.dart';
-import 'neuron_background.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -12,7 +11,8 @@ class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateMixin {
+class _HomeScreenState extends State<HomeScreen>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _fadeAnimation;
   late final StreamSubscription<AuthState> _authStateSubscription;
@@ -28,9 +28,10 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
     _controller.forward();
 
     // Listen for auth state changes to refresh the UI immediately
-    _authStateSubscription = Supabase.instance.client.auth.onAuthStateChange.listen((data) {
-      if (mounted) setState(() {});
-    });
+    _authStateSubscription = Supabase.instance.client.auth.onAuthStateChange
+        .listen((data) {
+          if (mounted) setState(() {});
+        });
   }
 
   @override
@@ -66,7 +67,10 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                 children: [
                   Text(
                     user.userMetadata?['full_name'] ?? 'User',
-                    style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   const SizedBox(width: 12),
                   PopupMenuButton<String>(
@@ -79,14 +83,22 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                     child: CircleAvatar(
                       radius: 18,
                       backgroundColor: Colors.white.withOpacity(0.1),
-                      child: const Icon(Icons.person, color: Colors.cyanAccent, size: 20),
+                      child: const Icon(
+                        Icons.person,
+                        color: Colors.cyanAccent,
+                        size: 20,
+                      ),
                     ),
                     itemBuilder: (context) => [
                       const PopupMenuItem(
                         value: 'logout',
                         child: Row(
                           children: [
-                            Icon(Icons.logout, size: 18, color: Colors.redAccent),
+                            Icon(
+                              Icons.logout,
+                              size: 18,
+                              color: Colors.redAccent,
+                            ),
                             SizedBox(width: 8),
                             Text('Logout'),
                           ],
@@ -496,15 +508,18 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                 final idx = entry.key;
                 final item = entry.value;
                 final isBrain = item['model_type'] == 'brain';
-                
+
                 return Column(
                   children: [
                     _buildHistoryItem(
                       icon: isBrain ? Icons.psychology : Icons.biotech,
                       title: isBrain ? 'Brain MRI Scan' : 'Skin Lesion Scan',
                       date: _formatDate(item['created_at']),
-                      result: '${item['result_label']} (${(item['confidence'] * 100).toStringAsFixed(1)}%)',
-                      color: isBrain ? Colors.purpleAccent : const Color(0xFFFF3B30),
+                      result:
+                          '${item['result_label']} (${(item['confidence'] * 100).toStringAsFixed(1)}%)',
+                      color: isBrain
+                          ? Colors.purpleAccent
+                          : const Color(0xFFFF3B30),
                     ),
                     if (idx < history.length - 1)
                       const Divider(color: Colors.white24, height: 32),
@@ -521,7 +536,20 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
   String _formatDate(String dateStr) {
     try {
       final date = DateTime.parse(dateStr).toLocal();
-      final months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      final months = [
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec',
+      ];
       return '${months[date.month - 1]} ${date.day}, ${date.year}';
     } catch (e) {
       return dateStr;
