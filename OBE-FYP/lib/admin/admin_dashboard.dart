@@ -438,16 +438,17 @@ class _AdminDashBoardState extends State<AdminDashBoard> {
                             ),
                             Positioned(
                               right: 40,
+                              top: 80,
                               bottom: 65,
                               child: Container(
                                 width: 300,
-                                height: 535,
                                 decoration: BoxDecoration(
                                   color: Colors.lightBlueAccent.shade100,
                                   borderRadius: BorderRadius.circular(20),
                                 ),
-                                child: Column(
-                                  children: [
+                                child: SingleChildScrollView(
+                                  child: Column(
+                                    children: [
                                     Padding(
                                       padding: const EdgeInsets.all(10),
                                       child: SizedBox(
@@ -667,6 +668,7 @@ class _AdminDashBoardState extends State<AdminDashBoard> {
                                       ),
                                     ),
                                   ],
+                                ),
                                 ),
                               ),
                             ),

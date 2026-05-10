@@ -124,15 +124,15 @@ class _StudentDrawerState extends State<StudentDrawer> {
                   )
                 ],
               ),
-              Container(
-                width: double.infinity,
-                height: 487,
-                decoration: BoxDecoration(
-                  color: Colors.blueAccent.shade700,
-                  borderRadius: const BorderRadius.only(
-                      bottomLeft: Radius.circular(24),
-                      topRight: Radius.circular(50)),
-                ),
+              Expanded(
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Colors.blueAccent.shade700,
+                    borderRadius: const BorderRadius.only(
+                        bottomLeft: Radius.circular(24),
+                        topRight: Radius.circular(50)),
+                  ),
                 child: Stack(
                   children: [
                     const Positioned(
@@ -304,6 +304,7 @@ class _StudentDrawerState extends State<StudentDrawer> {
                     ),
                   ],
                 ),
+              ),
               ),
             ],
           ),
@@ -802,14 +803,14 @@ class _AdminDrawerState extends State<AdminDrawer> {
                   )
                 ],
               ),
-              Container(
-                width: double.infinity,
-                height: MediaQuery.of(context).size.height * 1.3 / 2,
-                decoration: BoxDecoration(
-                    color: Colors.blueAccent.shade700,
-                    borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(24),
-                        topRight: Radius.circular(50))),
+              Expanded(
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      color: Colors.blueAccent.shade700,
+                      borderRadius: const BorderRadius.only(
+                          bottomLeft: Radius.circular(24),
+                          topRight: Radius.circular(50))),
                 child: Stack(
                   children: [
                     const Positioned(
@@ -1199,7 +1200,8 @@ class _AdminDrawerState extends State<AdminDrawer> {
                         ))
                   ],
                 ),
-              )
+              ),
+              ),
             ],
           ),
         );
@@ -1877,14 +1879,14 @@ class _FacultyDrawerState extends State<FacultyDrawer> {
                   )
                 ],
               ),
-              Container(
-                width: double.infinity,
-                height: MediaQuery.of(context).size.height * 1.3 / 2,
-                decoration: BoxDecoration(
-                    color: Colors.blueAccent.shade700,
-                    borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(24),
-                        topRight: Radius.circular(50))),
+              Expanded(
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      color: Colors.blueAccent.shade700,
+                      borderRadius: const BorderRadius.only(
+                          bottomLeft: Radius.circular(24),
+                          topRight: Radius.circular(50))),
                 child: Stack(
                   children: [
                     const Positioned(
@@ -2371,7 +2373,8 @@ class _FacultyDrawerState extends State<FacultyDrawer> {
                         ))
                   ],
                 ),
-              )
+              ),
+              ),
             ],
           ),
         );
