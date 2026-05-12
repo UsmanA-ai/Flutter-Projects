@@ -3,9 +3,9 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:typed_data';
 import 'dart:ui';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'ml_service.dart';
+import '../services/ml_service.dart';
 import 'chat_assistant.dart';
-import 'ai_service.dart';
+import '../services/ai_service.dart';
 
 class DetectionScreen extends StatefulWidget {
   final String modelType;

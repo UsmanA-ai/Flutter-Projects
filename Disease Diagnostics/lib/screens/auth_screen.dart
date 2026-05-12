@@ -101,6 +101,21 @@ class _AuthScreenState extends State<AuthScreen> {
     }
   }
 
+  Future<void> _signInWithMicrosoft() async {
+    try {
+      await Supabase.instance.client.auth.signInWithOAuth(
+        OAuthProvider.azure,
+        queryParams: {'prompt': 'select_account'},
+      );
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Microsoft Sign-In failed'), backgroundColor: Colors.redAccent),
+        );
+      }
+    }
+  }
+
   @override
   void dispose() {
     _nameController.dispose();
@@ -219,6 +234,25 @@ class _AuthScreenState extends State<AuthScreen> {
                             icon: const Icon(Icons.g_mobiledata, size: 36, color: Colors.white),
                             label: const Text(
                               'Continue with Google',
+                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white, letterSpacing: 1),
+                            ),
+                            style: OutlinedButton.styleFrom(
+                              side: BorderSide(color: Colors.white.withOpacity(0.3), width: 1.5),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                            ),
+                          ),
+                        ),
+                        
+                        const SizedBox(height: 12),
+                        
+                        SizedBox(
+                          width: double.infinity,
+                          height: 50,
+                          child: OutlinedButton.icon(
+                            onPressed: _isLoading ? null : _signInWithMicrosoft,
+                            icon: const Icon(Icons.window, size: 24, color: Colors.white),
+                            label: const Text(
+                              'Continue with Microsoft',
                               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white, letterSpacing: 1),
                             ),
                             style: OutlinedButton.styleFrom(

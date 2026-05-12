@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'home_screen.dart';
-import 'neuron_background.dart';
+import 'screens/home_screen.dart';
+import 'widgets/neuron_background.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

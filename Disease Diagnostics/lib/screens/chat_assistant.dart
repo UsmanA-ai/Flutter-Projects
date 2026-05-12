@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
-import 'ai_service.dart';
+import '../services/ai_service.dart';
 
 class ChatAssistant extends StatefulWidget {
   final String scanResult;
