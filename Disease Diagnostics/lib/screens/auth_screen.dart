@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'dart:ui';
+import 'package:flutter/foundation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'detection_screen.dart';
 
@@ -88,14 +89,17 @@ class _AuthScreenState extends State<AuthScreen> {
 
   Future<void> _signInWithGoogle() async {
     try {
+      debugPrint('Initiating Google Sign-In...');
       await Supabase.instance.client.auth.signInWithOAuth(
         OAuthProvider.google,
+        redirectTo: kIsWeb ? Uri.base.origin : null,
         queryParams: {'prompt': 'select_account'},
       );
     } catch (e) {
+      debugPrint('Google Sign-In Error: $e');
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Google Sign-In failed'), backgroundColor: Colors.redAccent),
+          SnackBar(content: Text('Google Sign-In failed: $e'), backgroundColor: Colors.redAccent),
         );
       }
     }
@@ -103,14 +107,17 @@ class _AuthScreenState extends State<AuthScreen> {
 
   Future<void> _signInWithMicrosoft() async {
     try {
+      debugPrint('Initiating Microsoft Sign-In...');
       await Supabase.instance.client.auth.signInWithOAuth(
         OAuthProvider.azure,
+        redirectTo: kIsWeb ? Uri.base.origin : null,
         queryParams: {'prompt': 'select_account'},
       );
     } catch (e) {
+      debugPrint('Microsoft Sign-In Error: $e');
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Microsoft Sign-In failed'), backgroundColor: Colors.redAccent),
+          SnackBar(content: Text('Microsoft Sign-In failed: $e'), backgroundColor: Colors.redAccent),
         );
       }
     }
