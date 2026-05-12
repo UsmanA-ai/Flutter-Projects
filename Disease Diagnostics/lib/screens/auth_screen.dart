@@ -90,9 +90,12 @@ class _AuthScreenState extends State<AuthScreen> {
   Future<void> _signInWithGoogle() async {
     try {
       debugPrint('Initiating Google Sign-In...');
+      // Most robust way to get current URL without the hash fragment
+      final String? redirectTo = kIsWeb ? Uri.base.toString().split('#')[0] : null;
+      
       await Supabase.instance.client.auth.signInWithOAuth(
         OAuthProvider.google,
-        redirectTo: kIsWeb ? Uri.base.origin : null,
+        redirectTo: redirectTo,
         queryParams: {'prompt': 'select_account'},
       );
     } catch (e) {
@@ -108,9 +111,11 @@ class _AuthScreenState extends State<AuthScreen> {
   Future<void> _signInWithMicrosoft() async {
     try {
       debugPrint('Initiating Microsoft Sign-In...');
+      final String? redirectTo = kIsWeb ? Uri.base.toString().split('#')[0] : null;
+
       await Supabase.instance.client.auth.signInWithOAuth(
         OAuthProvider.azure,
-        redirectTo: kIsWeb ? Uri.base.origin : null,
+        redirectTo: redirectTo,
         queryParams: {'prompt': 'select_account'},
       );
     } catch (e) {
